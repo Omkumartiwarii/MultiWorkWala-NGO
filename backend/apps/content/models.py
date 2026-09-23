@@ -236,16 +236,25 @@ class VolunteerApplication(Timestamped):
 
 class Donation(Timestamped):
     FREQUENCY_CHOICES = [("one-time", "One-time"), ("monthly", "Monthly")]
-    STATUS_CHOICES = [("enquiry", "Enquiry"), ("pending", "Pending"), ("paid", "Paid"), ("failed", "Failed"), ("refunded", "Refunded")]
+    STATUS_CHOICES = [("pending", "Pending"), ("success", "Success"), ("failed", "Failed"), ("cancelled", "Cancelled")]
     amount = models.DecimalField(max_digits=12, decimal_places=2, validators=[MinValueValidator(1)])
+    currency = models.CharField(max_length=3, default="INR")
     frequency = models.CharField(max_length=20, choices=FREQUENCY_CHOICES)
     full_name = models.CharField(max_length=160)
     email = models.EmailField()
     phone = models.CharField(max_length=40, blank=True)
+    anonymous = models.BooleanField(default=False)
+    message = models.TextField(blank=True)
     purpose = models.CharField(max_length=160, default="General support")
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="enquiry")
+    order_id = models.CharField(max_length=80, unique=True, db_index=True)
+    payment_id = models.CharField(max_length=120, blank=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending", db_index=True)
     payment_provider = models.CharField(max_length=40, blank=True)
     provider_reference = models.CharField(max_length=180, blank=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        indexes = [models.Index(fields=["status", "created_at"]), models.Index(fields=["email", "created_at"])]
 
 
 class ContactEnquiry(Timestamped):

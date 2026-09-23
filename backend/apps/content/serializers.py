@@ -155,9 +155,12 @@ class VolunteerSerializer(serializers.ModelSerializer):
 
 
 class DonationSerializer(serializers.ModelSerializer):
+    orderId = serializers.CharField(source="order_id", read_only=True)
+    paymentId = serializers.CharField(source="payment_id", read_only=True)
     class Meta:
         model = Donation
-        fields = ["amount", "frequency", "full_name", "email", "phone", "purpose"]
+        fields = ["id", "amount", "currency", "frequency", "full_name", "email", "phone", "anonymous", "message", "purpose", "orderId", "paymentId", "status", "created_at", "updated_at"]
+        read_only_fields = ["id", "currency", "orderId", "paymentId", "status", "created_at", "updated_at"]
 
 
 class ContactSerializer(serializers.ModelSerializer):

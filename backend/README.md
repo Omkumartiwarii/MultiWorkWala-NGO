@@ -33,7 +33,7 @@ Admin: `/admin/`
 
 ## Frontend
 
-Set `VITE_API_URL=http://localhost:8000/api/v1` in the frontend `.env.local`, then run `npm run dev` from the repository root.
+Set `VITE_API_URL=http://localhost:8000/api/v1` in `frontend/.env.local`, then run `npm run dev` from `frontend`.
 
 Run both servers during local development:
 
@@ -43,6 +43,8 @@ cd backend
 python manage.py runserver 127.0.0.1:8000
 
 # Terminal 2
+cd frontend
+npm install
 npm run dev
 ```
 

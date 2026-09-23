@@ -94,7 +94,7 @@ export default function SiteSectionPage({ kind, title, description }: SiteSectio
           <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
             <div>
               <h2 id="donate-heading" className="text-3xl font-medium sm:text-4xl">Choose how you would like to support the work</h2>
-              <p className="mt-5 text-lg leading-relaxed text-ink-500">Choose an amount and submit a donation enquiry. Payment is not processed here.</p>
+              <p className="mt-5 text-lg leading-relaxed text-ink-500">Choose an amount, review your order and complete a clearly labelled demo payment.</p>
               <div className="mt-8 max-w-md"><DonationForm /></div>
               <div className="mt-6 flex flex-wrap gap-3">
                 <ButtonLink to={ROUTES.contact} variant="outline">Contact the team</ButtonLink>

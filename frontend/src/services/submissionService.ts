@@ -21,14 +21,20 @@ export const submissionService = {
   submitContact(enquiry: ContactSubmission): Promise<void> {
     return apiClient.post("/contact/", enquiry).then(() => undefined);
   },
-  submitDonation(donation: Donation): Promise<void> {
-    return apiClient.post("/donations/", {
+  createDonation(donation: Donation): Promise<Donation> {
+    return apiClient.post<Donation>("/donations/create/", {
       amount: donation.amount,
       frequency: donation.frequency,
       full_name: donation.donor.fullName,
       email: donation.donor.email,
       phone: donation.donor.phone ?? "",
+      anonymous: donation.anonymous ?? false,
+      message: donation.message ?? "",
       purpose: donation.purpose ?? "General support",
-    }).then(() => undefined);
+    });
+  },
+  completeDemoDonation(orderId: string, outcome: "success" | "failed" | "cancelled"): Promise<Donation> {
+    const path = outcome === "success" ? "demo-success" : outcome === "failed" ? "demo-failed" : "demo-cancel";
+    return apiClient.post<Donation>(`/donations/${path}/`, { order_id: orderId });
   },
 };

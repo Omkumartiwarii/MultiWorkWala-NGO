@@ -217,9 +217,18 @@ export interface Report {
 export type DonationFrequency = "one-time" | "monthly";
 
 export interface Donation {
+  id?: number;
   amount: number;
+  currency?: string;
   frequency: DonationFrequency;
   purpose?: string;
+  anonymous?: boolean;
+  message?: string;
+  orderId?: string;
+  paymentId?: string;
+  status?: "pending" | "success" | "failed" | "cancelled";
+  created_at?: string;
+  updated_at?: string;
   donor: { fullName: string; email: string; phone?: string };
 }
 

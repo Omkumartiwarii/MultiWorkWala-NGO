@@ -6,6 +6,7 @@ from rest_framework.permissions import AllowAny, IsAdminUser
 from rest_framework.response import Response
 from .models import ContactEnquiry, Donation, Event, FAQ, FocusArea, GalleryItem, ImpactStat, NewsStory, OrganizationProfile, Partner, Program, Project, Report, SiteSetting, TeamMember, Testimonial, VolunteerApplication, NewsletterSubscriber
 from .serializers import ContactSerializer, DonationSerializer, EventSerializer, FAQSerializer, FocusAreaSerializer, GallerySerializer, ImpactStatSerializer, NewsStorySerializer, OrganizationSerializer, PartnerSerializer, ProgramSerializer, ProjectSerializer, ReportSerializer, TeamSerializer, TestimonialSerializer, VolunteerSerializer, NewsletterSerializer
+from .payments import DemoPaymentService
 
 
 class PublicReadSet(viewsets.ReadOnlyModelViewSet):
@@ -119,7 +120,42 @@ class VolunteerViewSet(viewsets.ModelViewSet):
 class DonationViewSet(viewsets.ModelViewSet):
     queryset = Donation.objects.all()
     serializer_class = DonationSerializer
-    def get_permissions(self): return [AllowAny()] if self.action == "create" else [IsAdminUser()]
+    def get_permissions(self):
+        public_actions = {"create", "create_order", "demo_success", "demo_failed", "demo_cancel", "retrieve"}
+        return [AllowAny()] if self.action in public_actions else [IsAdminUser()]
+
+    def create(self, request, *args, **kwargs):
+        return self.create_order(request, *args, **kwargs)
+
+    @action(detail=False, methods=["post"], url_path="create")
+    def create_order(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        donation = DemoPaymentService.create_order(serializer.validated_data)
+        return Response(self.get_serializer(donation).data, status=status.HTTP_201_CREATED)
+
+    def _complete_demo(self, request, target_status):
+        order_id = request.data.get("order_id")
+        if not order_id:
+            return Response({"order_id": ["This field is required."]}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            donation = self.get_queryset().get(order_id=order_id)
+        except Donation.DoesNotExist:
+            return Response({"detail": "Donation order not found."}, status=status.HTTP_404_NOT_FOUND)
+        donation = DemoPaymentService.complete(donation, target_status)
+        return Response(self.get_serializer(donation).data)
+
+    @action(detail=False, methods=["post"], url_path="demo-success")
+    def demo_success(self, request):
+        return self._complete_demo(request, "success")
+
+    @action(detail=False, methods=["post"], url_path="demo-failed")
+    def demo_failed(self, request):
+        return self._complete_demo(request, "failed")
+
+    @action(detail=False, methods=["post"], url_path="demo-cancel")
+    def demo_cancel(self, request):
+        return self._complete_demo(request, "cancelled")
 
 
 class ContactViewSet(viewsets.ModelViewSet):

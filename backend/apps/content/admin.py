@@ -44,5 +44,13 @@ class EventAdmin(admin.ModelAdmin):
     search_fields = ["title", "description", "location"]
     prepopulated_fields = {"slug": ("title",)}
 
-for model in [ImpactStat, GalleryItem, TeamMember, Testimonial, Partner, VolunteerApplication, Donation, ContactEnquiry, NewsletterSubscriber, Report, FAQ, SiteSetting]:
+@admin.register(Donation)
+class DonationAdmin(admin.ModelAdmin):
+    list_display = ["order_id", "full_name", "amount", "frequency", "status", "purpose", "created_at"]
+    list_filter = ["status", "frequency", "payment_provider", "created_at"]
+    search_fields = ["full_name", "email", "order_id", "payment_id", "purpose"]
+    readonly_fields = ["order_id", "payment_id", "payment_provider", "provider_reference", "created_at", "updated_at"]
+    fieldsets = [("Donation", {"fields": ["amount", "currency", "frequency", "purpose", "status"]}), ("Donor", {"fields": ["full_name", "email", "phone", "anonymous", "message"]}), ("Payment reference", {"fields": ["order_id", "payment_id", "payment_provider", "provider_reference", "created_at", "updated_at"]})]
+
+for model in [ImpactStat, GalleryItem, TeamMember, Testimonial, Partner, VolunteerApplication, ContactEnquiry, NewsletterSubscriber, Report, FAQ, SiteSetting]:
     admin.site.register(model)

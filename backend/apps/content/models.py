@@ -242,6 +242,7 @@ class Donation(Timestamped):
     full_name = models.CharField(max_length=160)
     email = models.EmailField()
     phone = models.CharField(max_length=40, blank=True)
+    purpose = models.CharField(max_length=160, default="General support")
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="enquiry")
     payment_provider = models.CharField(max_length=40, blank=True)
     provider_reference = models.CharField(max_length=180, blank=True)

@@ -28,6 +28,7 @@ export const submissionService = {
       full_name: donation.donor.fullName,
       email: donation.donor.email,
       phone: donation.donor.phone ?? "",
+      purpose: donation.purpose ?? "General support",
     }).then(() => undefined);
   },
 };

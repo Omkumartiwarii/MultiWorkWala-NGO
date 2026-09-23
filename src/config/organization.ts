@@ -8,7 +8,7 @@ import { socialLinks } from "./social";
  * replace each of them before launch.
  */
 export const organization = {
-  name: "MultiWorkWala",
+  name: "MultiWorkWala Pvt. Ltd.",
   descriptor: "Social Impact Initiative",
   tagline: "Creating opportunities. Transforming communities.",
   email: "info@multiworkwala.com",
@@ -17,6 +17,6 @@ export const organization = {
   address: {
     lines: ["Office No. 404, Fourth Floor,", "H-159, H Block, Sector-63,", "Noida, Uttar Pradesh – 201301"],
   },
-  logo: "/images/favicon.svg",
+  logo: "/images/logo.png",
   socialLinks,
 } as const;

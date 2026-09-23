@@ -157,7 +157,7 @@ class VolunteerSerializer(serializers.ModelSerializer):
 class DonationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Donation
-        fields = ["amount", "frequency", "full_name", "email", "phone"]
+        fields = ["amount", "frequency", "full_name", "email", "phone", "purpose"]
 
 
 class ContactSerializer(serializers.ModelSerializer):

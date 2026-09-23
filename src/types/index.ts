@@ -219,6 +219,7 @@ export type DonationFrequency = "one-time" | "monthly";
 export interface Donation {
   amount: number;
   frequency: DonationFrequency;
+  purpose?: string;
   donor: { fullName: string; email: string; phone?: string };
 }
 

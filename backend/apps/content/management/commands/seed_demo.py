@@ -16,5 +16,5 @@ class Command(BaseCommand):
         }
         for key, (title, short_title, description, icon) in areas.items():
             FocusArea.objects.update_or_create(key=key, defaults={"title": title, "short_title": short_title, "description": description, "icon": icon, "is_active": True})
-        OrganizationProfile.objects.get_or_create(name="MultiWorkWala", defaults={"descriptor": "Social Impact Initiative", "is_active": True, "address": []})
+        OrganizationProfile.objects.get_or_create(name="MultiWorkWala Pvt. Ltd.", defaults={"descriptor": "Social Impact Initiative", "is_active": True, "address": []})
         self.stdout.write(self.style.SUCCESS("Created safe structural demo focus areas and organization profile. All content remains unverified."))

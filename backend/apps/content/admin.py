@@ -1,8 +1,8 @@
 from django.contrib import admin
 from .models import ContactEnquiry, Donation, Event, FAQ, FocusArea, GalleryItem, ImpactStat, ImageAsset, NewsStory, OrganizationProfile, Partner, Program, Project, Report, SiteSetting, TeamMember, Testimonial, VolunteerApplication, NewsletterSubscriber
 
-admin.site.site_header = "MultiWorkWala NGO administration"
-admin.site.site_title = "MultiWorkWala NGO"
+admin.site.site_header = "MultiWorkWala Pvt. Ltd. administration"
+admin.site.site_title = "MultiWorkWala Pvt. Ltd."
 
 @admin.register(ImageAsset)
 class ImageAssetAdmin(admin.ModelAdmin):

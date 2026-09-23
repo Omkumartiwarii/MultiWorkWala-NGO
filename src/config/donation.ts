@@ -1,5 +1,5 @@
 export const donationConfig = {
-  upiId: import.meta.env.VITE_DONATION_UPI_ID || "8700740710@ybl",
+  upiId: import.meta.env.VITE_DONATION_UPI_ID || "9341596137@axl",
   payeeName: import.meta.env.VITE_DONATION_PAYEE_NAME || "MultiWorkWala Pvt. Ltd.",
   currency: "INR",
 } as const;

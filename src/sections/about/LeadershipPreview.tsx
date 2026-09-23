@@ -16,7 +16,7 @@ export function LeadershipPreview() {
       <SectionHeading
         id="leadership-heading"
         title="Leadership"
-        description="Profiles below are placeholders. Verified leadership details will replace them."
+        description="Verified leadership profiles will be published when names, roles and biographies are approved."
         action={
           <ButtonLink to={ROUTES.team} variant="outline">
             Meet the team

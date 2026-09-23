@@ -34,7 +34,7 @@ export function CTASection({ id, title, description, primary, secondary, panel =
       <Reveal>
         <div
           className={cn(
-            "flex flex-col gap-8 rounded-[2rem] px-6 py-12 sm:px-12 lg:flex-row lg:items-center lg:justify-between lg:px-16 lg:py-14",
+            "flex flex-col gap-8 rounded-4xl px-6 py-12 sm:px-12 lg:flex-row lg:items-center lg:justify-between lg:px-16 lg:py-14",
             style.box,
           )}
         >

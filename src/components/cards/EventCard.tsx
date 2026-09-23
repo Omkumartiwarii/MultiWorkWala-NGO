@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Clock, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { SiteImage } from "@/components/common/SiteImage";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { ROUTES } from "@/constants/routes";
@@ -43,10 +44,9 @@ function EventMeta({ event }: { event: NgoEvent }) {
 export function FeaturedEventCard({ event }: { event: NgoEvent }) {
   return (
     <Card lift={false} className="flex h-full flex-col overflow-hidden">
-      <div className="relative aspect-[16/9] overflow-hidden">
-        <img
-          src={event.image.src}
-          alt={event.image.alt}
+      <div className="relative aspect-video overflow-hidden">
+        <SiteImage
+          image={event.image}
           loading="lazy"
           decoding="async"
           className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

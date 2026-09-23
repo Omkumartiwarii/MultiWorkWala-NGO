@@ -1,25 +1,21 @@
 import { Heart } from "lucide-react";
-import { ImpactCounter } from "@/components/common/ImpactCounter";
+import { SiteImage } from "@/components/common/SiteImage";
 import { Reveal } from "@/components/common/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Icon } from "@/components/ui/Icon";
 import { ROUTES } from "@/constants/routes";
 import { heroContent } from "@/data/homeContent";
 import { archShape } from "@/utils/styles";
-import { getImpactStat } from "@/data/impact";
 
 export function HomeHero() {
-  const stat = getImpactStat(heroContent.floatingStatId);
-
   return (
     <section
       aria-labelledby="hero-heading"
       className="relative isolate overflow-hidden bg-navy-950 pt-14 pb-32 text-ivory-100 sm:pt-20 lg:pt-24 lg:pb-40"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 -left-40 size-[36rem] rounded-full bg-brand-600/25 blur-3xl" />
-        <div className="absolute -right-32 bottom-0 size-[30rem] rounded-full bg-gold-500/15 blur-3xl" />
+        <div className="absolute -top-24 -left-40 size-144 rounded-full bg-brand-600/25 blur-3xl" />
+        <div className="absolute -right-32 bottom-0 size-120 rounded-full bg-gold-500/15 blur-3xl" />
       </div>
 
       <Container className="grid items-center gap-16 lg:grid-cols-12">
@@ -54,10 +50,9 @@ export function HomeHero() {
         </div>
 
         <Reveal delay={0.15} className="relative mx-auto w-full max-w-sm sm:max-w-md lg:col-span-5 lg:max-w-none">
-          <div className={`relative aspect-[4/5] overflow-hidden border border-white/10 shadow-2xl ${archShape}`}>
-            <img
-              src={heroContent.image.src}
-              alt={heroContent.image.alt}
+          <div className={`relative aspect-4/5 overflow-hidden border border-white/10 shadow-2xl ${archShape}`}>
+            <SiteImage
+              image={heroContent.image}
               fetchPriority="high"
               decoding="async"
               className="size-full object-cover"
@@ -68,20 +63,6 @@ export function HomeHero() {
             />
           </div>
 
-          <div className="absolute -bottom-8 left-0 w-64 animate-float rounded-2xl bg-ivory-50 p-5 shadow-lift sm:-left-6">
-            <div className="flex items-center gap-4">
-              <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700">
-                <Icon name={stat.icon} className="size-6" />
-              </span>
-              <div>
-                <p className="font-display text-3xl leading-none font-medium text-navy-900">
-                  <ImpactCounter value={stat.value} suffix={stat.suffix} />
-                </p>
-                <p className="mt-1 text-sm font-medium text-ink-600">{stat.label}</p>
-              </div>
-            </div>
-            <p className="mt-3 border-t border-navy-900/10 pt-3 text-xs text-ink-500">{heroContent.floatingStatNote}</p>
-          </div>
         </Reveal>
       </Container>
     </section>

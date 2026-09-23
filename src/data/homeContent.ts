@@ -1,14 +1,10 @@
-// DEMO COPY — all home page text lives here so it can be edited without touching components.
-// Replace with approved organization copy before launch.
 import { placeholderImage } from "@/config/images";
 
 export const heroContent = {
   headline: ["Creating Opportunities.", "Transforming Communities.", "Building a Better Tomorrow."],
   description:
     "MultiWorkWala is a community-first initiative that helps families reach education, healthcare and livelihood opportunities. We work alongside local partners and share what we learn.",
-  image: placeholderImage("hero-community", "Placeholder artwork of a sun rising over layered hills"),
-  floatingStatId: "lives",
-  floatingStatNote: "Demo figure, to be replaced with verified data",
+  image: placeholderImage("hero-community", "Community volunteers and local families working together"),
 };
 
 export const aboutPreviewContent = {
@@ -18,7 +14,7 @@ export const aboutPreviewContent = {
     "We begin by listening. Every program starts with the questions families are already asking, and grows through partnerships with local groups, volunteers and institutions.",
   mission:
     "Our mission is to widen access to education, healthcare and livelihood opportunities, so that every family can plan for a better future.",
-  image: placeholderImage("about-community", "Placeholder artwork of layered hills at dusk"),
+  image: placeholderImage("about-community", "NGO workers listening with local families"),
   ctaLabel: "Discover Our Story",
 };
 
@@ -29,12 +25,8 @@ export const impactStoryContent = {
     "A school within reach, a health check before a problem grows, a first customer for a new business. Small openings like these change what a family can plan for.",
     "That is the work we focus on: removing the practical barriers between people and the opportunities that already exist.",
   ],
-  quote: {
-    text: "When people are involved from the start, the change lasts.",
-    attribution: "Placeholder quote. Replace with a verified voice from the community or leadership.",
-  },
   statIds: ["lives", "communities", "volunteers"],
-  image: placeholderImage("impact-story", "Placeholder artwork of a golden sun over hills"),
+  image: placeholderImage("impact-story", "A community participant speaking with an NGO worker"),
   ctaLabel: "View Our Impact",
 };
 
@@ -53,8 +45,7 @@ export const sectionCopy = {
   },
   stories: {
     title: "Stories from the communities we serve",
-    description:
-      "These stories are illustrative placeholders. Verified stories, shared with consent, will replace them.",
+    description: "Published stories will be shared with consent and clear context from the communities involved.",
   },
   events: {
     title: "Come and meet us",
@@ -66,8 +57,7 @@ export const sectionCopy = {
   },
   partners: {
     title: "Working with partners",
-    description:
-      "Partnerships help us reach further. The tiles below are placeholders showing where verified partner logos will appear. No partnership is implied.",
+    description: "Verified partner information will be published here when collaboration details are approved.",
   },
 };
 

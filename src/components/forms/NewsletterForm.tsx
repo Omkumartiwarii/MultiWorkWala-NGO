@@ -28,7 +28,7 @@ export function NewsletterForm() {
       notify({
         tone: "success",
         title: "Thank you for subscribing",
-        description: "This is a demo. Your details were not sent or stored.",
+        description: "Your subscription has been received.",
       });
       reset();
     } catch {

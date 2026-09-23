@@ -4,6 +4,7 @@ import { archShape } from "@/utils/styles";
 import type { ImageAsset } from "@/types";
 import { Breadcrumb, type Crumb } from "./Breadcrumb";
 import { Reveal } from "./Reveal";
+import { SiteImage } from "./SiteImage";
 
 interface PageHeroProps {
   title: string;
@@ -22,8 +23,8 @@ export function PageHero({ title, description, breadcrumbs, eyebrow, image, chil
   return (
     <section aria-labelledby="page-title" className="relative isolate overflow-hidden bg-navy-950 pt-8 pb-16 text-ivory-100 sm:pb-20 lg:pt-10 lg:pb-24">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-32 -left-32 size-[28rem] rounded-full bg-brand-600/25 blur-3xl" />
-        <div className="absolute -right-24 -bottom-32 size-[26rem] rounded-full bg-gold-500/15 blur-3xl" />
+        <div className="absolute -top-32 -left-32 size-112 rounded-full bg-brand-600/25 blur-3xl" />
+        <div className="absolute -right-24 -bottom-32 size-104 rounded-full bg-gold-500/15 blur-3xl" />
       </div>
 
       <Container>
@@ -45,12 +46,11 @@ export function PageHero({ title, description, breadcrumbs, eyebrow, image, chil
 
           {image && (
             <Reveal delay={0.1} className="hidden lg:col-span-5 lg:block">
-              <img
-                src={image.src}
-                alt={image.alt}
+              <SiteImage
+                image={image}
                 fetchPriority="high"
                 decoding="async"
-                className={`mx-auto aspect-[4/5] w-full max-w-sm border border-white/10 object-cover shadow-2xl ${archShape}`}
+                className={`mx-auto aspect-4/5 w-full max-w-sm border border-white/10 object-cover shadow-2xl ${archShape}`}
               />
             </Reveal>
           )}

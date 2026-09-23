@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Sparkles, Users } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { SiteImage } from "@/components/common/SiteImage";
 import { Card } from "@/components/ui/Card";
 import { ROUTES } from "@/constants/routes";
 import { getFocusArea } from "@/data/focusAreas";
-import { formatNumber } from "@/utils/format";
 import { stretchedLink } from "@/utils/styles";
 import type { Program } from "@/types";
 
@@ -13,10 +13,9 @@ export function ProgramCard({ program }: { program: Program }) {
 
   return (
     <Card className="flex h-full flex-col overflow-hidden">
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <img
-          src={program.image.src}
-          alt={program.image.alt}
+      <div className="relative aspect-4/3 overflow-hidden">
+        <SiteImage
+          image={program.image}
           loading="lazy"
           decoding="async"
           className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -39,10 +38,12 @@ export function ProgramCard({ program }: { program: Program }) {
             <MapPin className="size-4 shrink-0 text-brand-600" aria-hidden="true" />
             {program.location}
           </li>
-          <li className="flex items-center gap-2">
-            <Users className="size-4 shrink-0 text-brand-600" aria-hidden="true" />
-            {formatNumber(program.beneficiaries)} people supported
-          </li>
+          {program.verified && (
+            <li className="flex items-center gap-2">
+              <Users className="size-4 shrink-0 text-brand-600" aria-hidden="true" />
+              {program.beneficiaries} people supported
+            </li>
+          )}
         </ul>
 
         <p className="mt-4 flex items-start gap-2 rounded-xl bg-brand-50 px-3 py-2.5 text-sm font-medium text-brand-800">

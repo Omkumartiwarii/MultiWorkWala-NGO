@@ -7,7 +7,7 @@ export function Skeleton({ className }: { className?: string }) {
 export function SkeletonCard() {
   return (
     <div aria-hidden="true" className="overflow-hidden rounded-2xl border border-navy-900/10 bg-white">
-      <Skeleton className="aspect-[4/3] rounded-none" />
+      <Skeleton className="aspect-4/3 rounded-none" />
       <div className="space-y-3 p-6">
         <Skeleton className="h-5 w-3/4" />
         <Skeleton className="h-4 w-full" />

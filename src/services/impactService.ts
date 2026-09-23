@@ -1,9 +1,8 @@
-import { mockRequest } from "@/api/mock";
-import { impactStats } from "@/data/impact";
+import { apiClient } from "@/api/client";
 import type { ImpactStat } from "@/types";
 
 export const impactService = {
   getStats(): Promise<ImpactStat[]> {
-    return mockRequest(impactStats);
+    return apiClient.getList("/impact/");
   },
 };

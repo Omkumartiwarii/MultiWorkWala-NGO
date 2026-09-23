@@ -47,15 +47,10 @@ export function ProgramDetail({ program }: { program: Program }) {
         </div>
       </Section>
 
-      <StatsBand
-        id="program-stats-heading"
-        title="Impact at a glance"
-        description="Illustrative figures for now. Verified numbers will replace them."
-        stats={program.stats}
-      />
+      {program.verified && <StatsBand id="program-stats-heading" title="Impact at a glance" stats={program.stats} />}
 
       <Section labelledBy="program-gallery-heading">
-        <SectionHeading id="program-gallery-heading" title="Gallery" description="Placeholder artwork. Real program photography will appear here." />
+        <SectionHeading id="program-gallery-heading" title="Gallery" description="Images from this program and its community setting." />
         <div className="mt-10">
           <ImageGrid images={program.gallery} />
         </div>

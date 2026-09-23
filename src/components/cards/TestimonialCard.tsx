@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin } from "lucide-react";
+import { SiteImage } from "@/components/common/SiteImage";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { ROUTES } from "@/constants/routes";
@@ -9,10 +10,9 @@ import type { Testimonial } from "@/types";
 export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
     <Card className="flex h-full flex-col overflow-hidden">
-      <div className="relative aspect-[5/3] overflow-hidden">
-        <img
-          src={testimonial.image.src}
-          alt={testimonial.image.alt}
+      <div className="relative aspect-5/3 overflow-hidden">
+        <SiteImage
+          image={testimonial.image}
           loading="lazy"
           decoding="async"
           className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

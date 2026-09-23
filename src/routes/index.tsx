@@ -2,8 +2,14 @@ import type { ComponentType } from "react";
 import { createBrowserRouter, type RouteObject } from "react-router-dom";
 import { PageLoader } from "@/components/common/PageLoader";
 import { MainLayout } from "@/layouts/MainLayout";
-import { PlannedPage } from "@/pages/PlannedPage";
+import EventsPage from "@/pages/EventsPage";
+import EventDetailPage from "@/pages/EventDetailPage";
+import NewsPage from "@/pages/NewsPage";
+import NewsDetailPage from "@/pages/NewsDetailPage";
 import { RouteErrorPage } from "@/pages/RouteErrorPage";
+import ImpactPage from "@/pages/ImpactPage";
+import NotFoundPage from "@/pages/NotFoundPage";
+import SiteSectionPage from "@/pages/SiteSectionPage";
 
 type PageModule = { default: ComponentType };
 
@@ -12,12 +18,9 @@ const page = (load: () => Promise<PageModule>): Pick<RouteObject, "lazy"> => ({
   lazy: async () => ({ Component: (await load()).default }),
 });
 
-/** Placeholder for pages built in later phases. See PlannedPage. */
-const planned = (title: string, description: string, phase: number): Pick<RouteObject, "element"> => ({
-  element: <PlannedPage title={title} description={description} phase={phase} />,
+const siteSection = (kind: Parameters<typeof SiteSectionPage>[0]["kind"], title: string, description: string): Pick<RouteObject, "element"> => ({
+  element: <SiteSectionPage kind={kind} title={title} description={description} />,
 });
-
-const notFound = page(() => import("@/pages/NotFoundPage"));
 
 export const router = createBrowserRouter([
   {
@@ -35,25 +38,25 @@ export const router = createBrowserRouter([
           { path: "programs/:slug", ...page(() => import("@/pages/ProgramDetailPage")) },
           { path: "projects", ...page(() => import("@/pages/ProjectsPage")) },
           { path: "projects/:slug", ...page(() => import("@/pages/ProjectDetailPage")) },
-          { path: "impact", ...planned("Our Impact", "Measured impact across communities and programs.", 9) },
-          { path: "events", ...planned("Events", "Upcoming and past events.", 10) },
-          { path: "events/:slug", ...planned("Event", "Event details and registration.", 10) },
-          { path: "news", ...planned("News & Stories", "News, updates and stories.", 11) },
-          { path: "news/:slug", ...planned("Article", "Article details.", 11) },
-          { path: "gallery", ...planned("Gallery", "Photos from our work.", 12) },
-          { path: "donate", ...planned("Donate", "Support our programs.", 13) },
-          { path: "volunteer", ...planned("Volunteer", "Share your time and skills.", 14) },
-          { path: "partnership", ...planned("Partnerships & CSR", "Partner with us.", 15) },
-          { path: "team", ...planned("Our Team", "The people behind our work.", 16) },
-          { path: "reports", ...planned("Reports & Transparency", "Reports, policies and documents.", 17) },
-          { path: "contact", ...planned("Contact Us", "Get in touch.", 18) },
-          { path: "faq", ...planned("Frequently Asked Questions", "Answers to common questions.", 19) },
-          { path: "privacy-policy", ...planned("Privacy Policy", "How we handle personal information.", 19) },
-          { path: "terms", ...planned("Terms & Conditions", "Terms of use.", 19) },
-          { path: "cancellation-policy", ...planned("Cancellation Policy", "Donation cancellation and refunds.", 19) },
+          { path: "impact", element: <ImpactPage /> },
+          { path: "events", element: <EventsPage /> },
+          { path: "events/:slug", element: <EventDetailPage /> },
+          { path: "news", element: <NewsPage /> },
+          { path: "news/:slug", element: <NewsDetailPage /> },
+          { path: "gallery", ...siteSection("gallery", "Gallery", "A visual collection of the community settings and activities represented across this site.") },
+          { path: "donate", ...siteSection("donate", "Donate", "Choose how you would like to support the organization's work and contact the team for verified next steps.") },
+          { path: "volunteer", ...siteSection("volunteer", "Volunteer", "Share your time, skills and availability with the team.") },
+          { path: "partnership", ...siteSection("partnership", "Partnerships & CSR", "Start a conversation about a responsible partnership or CSR collaboration.") },
+          { path: "team", ...siteSection("team", "Our Team", "Learn how to request current, verified information about the people behind the work.") },
+          { path: "reports", ...siteSection("reports", "Reports & Transparency", "Find verified reports and request organizational documents from the team.") },
+          { path: "contact", ...siteSection("contact", "Contact Us", "Use the official contact details to reach the organization.") },
+          { path: "faq", ...siteSection("faq", "Frequently Asked Questions", "Clear answers about participation, support and contacting the organization.") },
+          { path: "privacy-policy", ...siteSection("privacy", "Privacy Policy", "The principles used when handling information shared through this website.") },
+          { path: "terms", ...siteSection("terms", "Terms & Conditions", "Basic terms for using this website and its illustrative information.") },
+          { path: "cancellation-policy", ...siteSection("cancellation", "Cancellation Policy", "How to contact the organization about a donation cancellation or refund request.") },
 
-          { path: "404", ...notFound },
-          { path: "*", ...notFound },
+          { path: "404", element: <NotFoundPage /> },
+          { path: "*", element: <NotFoundPage /> },
         ],
       },
     ],

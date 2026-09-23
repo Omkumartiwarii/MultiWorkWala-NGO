@@ -31,6 +31,8 @@ export type WorkStatus = "ongoing" | "completed" | "upcoming";
 export interface ImageAsset {
   src: string;
   alt: string;
+  fallbackSrc?: string;
+  objectPosition?: string;
 }
 
 export interface FocusArea {
@@ -69,6 +71,8 @@ export interface Program {
   status: WorkStatus;
   impactHighlight: string;
   featured: boolean;
+  /** Only verified operational figures should be shown publicly. */
+  verified?: boolean;
   /* Detail page fields */
   overview: string;
   objectives: string[];
@@ -97,6 +101,8 @@ export interface Project {
   /** 0–100 */
   progress: number;
   featured: boolean;
+  /** Only verified operational figures should be shown publicly. */
+  verified?: boolean;
   /* Detail page fields */
   overview: string;
   objectives: string[];
@@ -125,7 +131,16 @@ export interface NgoEvent {
 }
 
 export type BlogCategory =
-  "Impact" | "Community" | "Education" | "Healthcare" | "Environment" | "Volunteer" | "Events" | "Organization Updates";
+  | "Impact"
+  | "Community"
+  | "Education"
+  | "Healthcare"
+  | "Women Empowerment"
+  | "Child Welfare"
+  | "Environment"
+  | "Volunteer"
+  | "Events"
+  | "Organization Updates";
 
 export interface BlogAuthor {
   name: string;
@@ -223,6 +238,14 @@ export interface VolunteerApplication {
 export interface NewsletterSubscription {
   name: string;
   email: string;
+}
+
+export interface ContactEnquiry {
+  name: string;
+  email: string;
+  phone?: string;
+  subject: string;
+  message: string;
 }
 
 export interface PageMetadata {

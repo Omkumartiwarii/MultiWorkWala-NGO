@@ -17,6 +17,6 @@ export const organization = {
   address: {
     lines: ["Office No. 404, Fourth Floor,", "H-159, H Block, Sector-63,", "Noida, Uttar Pradesh – 201301"],
   },
-  logo: "/favicon.svg",
+  logo: "/images/favicon.svg",
   socialLinks,
 } as const;

@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/common/Reveal";
+import { SiteImage } from "@/components/common/SiteImage";
 import { ButtonLink } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -16,12 +17,11 @@ export function AboutPreview() {
               aria-hidden="true"
               className={`absolute -right-4 -bottom-4 size-full border-2 border-gold-400/60 sm:-right-6 sm:-bottom-6 ${archShape}`}
             />
-            <img
-              src={content.image.src}
-              alt={content.image.alt}
+            <SiteImage
+              image={content.image}
               loading="lazy"
               decoding="async"
-              className={`relative aspect-[4/5] w-full object-cover shadow-card ${archShape}`}
+              className={`relative aspect-4/5 w-full object-cover shadow-card ${archShape}`}
             />
           </div>
         </Reveal>

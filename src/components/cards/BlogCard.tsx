@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { SiteImage } from "@/components/common/SiteImage";
 import { Card } from "@/components/ui/Card";
 import { ROUTES } from "@/constants/routes";
 import { formatDate } from "@/utils/date";
@@ -10,10 +11,9 @@ import type { BlogPost } from "@/types";
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Card className="flex h-full flex-col overflow-hidden">
-      <div className="aspect-[16/10] overflow-hidden">
-        <img
-          src={post.image.src}
-          alt={post.image.alt}
+      <div className="aspect-16/10 overflow-hidden">
+        <SiteImage
+          image={post.image}
           loading="lazy"
           decoding="async"
           className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

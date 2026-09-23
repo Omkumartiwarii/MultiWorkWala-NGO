@@ -1,25 +1,25 @@
 import { ImpactCounter } from "@/components/common/ImpactCounter";
+import { SiteImage } from "@/components/common/SiteImage";
 import { Reveal } from "@/components/common/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ROUTES } from "@/constants/routes";
 import { impactStoryContent as content } from "@/data/homeContent";
-import { getImpactStat } from "@/data/impact";
+import { impactStats } from "@/data/impact";
 
 export function ImpactStory() {
-  const stats = content.statIds.map(getImpactStat);
+  const stats = impactStats.filter((stat) => content.statIds.includes(stat.id));
 
   return (
     <Section labelledBy="story-heading">
       <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-5">
-          <img
-            src={content.image.src}
-            alt={content.image.alt}
+          <SiteImage
+            image={content.image}
             loading="lazy"
             decoding="async"
-            className="mx-auto aspect-[4/5] w-full max-w-md rounded-3xl object-cover shadow-card lg:max-w-none"
+            className="mx-auto aspect-4/5 w-full max-w-md rounded-3xl object-cover shadow-card lg:max-w-none"
           />
         </Reveal>
 
@@ -31,21 +31,18 @@ export function ImpactStory() {
             ))}
           </div>
 
-          <dl className="mt-10 grid grid-cols-3 gap-4 border-y border-navy-900/10 py-8">
-            {stats.map((stat) => (
-              <div key={stat.id}>
-                <dd className="font-display text-3xl font-medium text-navy-900 sm:text-4xl">
-                  <ImpactCounter value={stat.value} suffix={stat.suffix} />
-                </dd>
-                <dt className="mt-1 text-sm text-ink-500">{stat.label}</dt>
-              </div>
-            ))}
-          </dl>
-
-          <figure className="mt-8">
-            <blockquote className="font-display text-2xl leading-snug text-navy-900">“{content.quote.text}”</blockquote>
-            <figcaption className="mt-3 text-sm text-ink-500">{content.quote.attribution}</figcaption>
-          </figure>
+          {stats.length > 0 && (
+            <dl className="mt-10 grid grid-cols-3 gap-4 border-y border-navy-900/10 py-8">
+              {stats.map((stat) => (
+                <div key={stat.id}>
+                  <dd className="font-display text-3xl font-medium text-navy-900 sm:text-4xl">
+                    <ImpactCounter value={stat.value} suffix={stat.suffix} />
+                  </dd>
+                  <dt className="mt-1 text-sm text-ink-500">{stat.label}</dt>
+                </div>
+              ))}
+            </dl>
+          )}
 
           <div className="mt-10">
             <ButtonLink to={ROUTES.impact} variant="secondary" size="lg">

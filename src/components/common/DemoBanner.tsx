@@ -1,6 +1,6 @@
 import { siteConfig } from "@/config/site";
 
-/** Reminds reviewers that content is placeholder. Toggle with `siteConfig.showDemoNotice`. */
+/** Explains the content-verification status without making claims about the organization. */
 export function DemoBanner() {
   if (!siteConfig.showDemoNotice) return null;
 

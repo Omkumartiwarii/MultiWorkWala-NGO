@@ -1,20 +1,19 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Users } from "lucide-react";
 import { Card } from "@/components/ui/Card";
+import { SiteImage } from "@/components/common/SiteImage";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { StatusBadge } from "@/components/ui/Badge";
 import { ROUTES } from "@/constants/routes";
-import { formatNumber } from "@/utils/format";
 import { stretchedLink } from "@/utils/styles";
 import type { Project } from "@/types";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <Card className="flex h-full flex-col overflow-hidden">
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <img
-          src={project.image.src}
-          alt={project.image.alt}
+      <div className="relative aspect-16/10 overflow-hidden">
+        <SiteImage
+          image={project.image}
           loading="lazy"
           decoding="async"
           className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -34,10 +33,12 @@ export function ProjectCard({ project }: { project: Project }) {
             <MapPin className="size-4 text-brand-600" aria-hidden="true" />
             {project.location}
           </li>
-          <li className="flex items-center gap-1.5">
-            <Users className="size-4 text-brand-600" aria-hidden="true" />
-            {formatNumber(project.beneficiaries)} beneficiaries
-          </li>
+          {project.verified && (
+            <li className="flex items-center gap-1.5">
+              <Users className="size-4 text-brand-600" aria-hidden="true" />
+              {project.beneficiaries} beneficiaries
+            </li>
+          )}
         </ul>
 
         <p className="mt-4 line-clamp-3 leading-relaxed text-ink-500">{project.description}</p>

@@ -1,16 +1,16 @@
 import { ArrowUpRight } from "lucide-react";
+import { SiteImage } from "@/components/common/SiteImage";
 import type { TeamMember } from "@/types";
 
 export function TeamCard({ member }: { member: TeamMember }) {
   return (
     <article className="group h-full">
       <div className="overflow-hidden rounded-2xl">
-        <img
-          src={member.image.src}
-          alt={member.image.alt}
+        <SiteImage
+          image={member.image}
           loading="lazy"
           decoding="async"
-          className="aspect-[4/5] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="aspect-4/5 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
       </div>
       <h3 className="mt-5 text-xl font-medium">{member.name}</h3>

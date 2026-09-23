@@ -1,26 +1,22 @@
-import { mockRequest } from "@/api/mock";
-import { programs } from "@/data/programs";
+import { apiClient } from "@/api/client";
 import type { Program } from "@/types";
 
 export const programService = {
   getAll(): Promise<Program[]> {
-    return mockRequest(programs);
+    return apiClient.getList("/programs/");
   },
 
   getFeatured(limit = 3): Promise<Program[]> {
-    return mockRequest(programs.filter((program) => program.featured).slice(0, limit));
+    return apiClient.getList(`/programs/featured/?limit=${limit}`);
   },
 
   /** Resolves to null when no program has this slug. */
   getBySlug(slug: string): Promise<Program | null> {
-    return mockRequest(programs.find((program) => program.slug === slug) ?? null);
+    return apiClient.get(`/programs/${encodeURIComponent(slug)}/`);
   },
 
   /** Same-category programs first, then others. */
   getRelated(slug: string, limit = 3): Promise<Program[]> {
-    const current = programs.find((program) => program.slug === slug);
-    const others = programs.filter((program) => program.slug !== slug);
-    others.sort((a, b) => Number(b.category === current?.category) - Number(a.category === current?.category));
-    return mockRequest(others.slice(0, limit));
+    return apiClient.getList(`/programs/${encodeURIComponent(slug)}/related/?limit=${limit}`);
   },
 };

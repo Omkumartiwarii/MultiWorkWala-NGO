@@ -3,7 +3,6 @@ import { FactList } from "@/components/common/FactList";
 import { Reveal } from "@/components/common/Reveal";
 import { StatusBadge } from "@/components/ui/Badge";
 import { Section } from "@/components/ui/Section";
-import { formatNumber } from "@/utils/format";
 import type { Program } from "@/types";
 
 export function ProgramBody({ program }: { program: Program }) {
@@ -32,7 +31,7 @@ export function ProgramBody({ program }: { program: Program }) {
               items={[
                 { label: "Status", value: <StatusBadge status={program.status} /> },
                 { label: "Location", value: program.location },
-                { label: "People supported", value: `${formatNumber(program.beneficiaries)}+` },
+                ...(program.verified ? [{ label: "People supported", value: `${program.beneficiaries}+` }] : []),
                 { label: "Who it is for", value: <span className="font-medium">{program.targetBeneficiaries}</span> },
               ]}
             />

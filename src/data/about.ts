@@ -1,5 +1,3 @@
-// DEMO COPY — replace with the organization's approved text.
-// Nothing here describes real history: founding details are deliberately left as placeholders.
 import { placeholderImage } from "@/config/images";
 import type { IconName } from "@/types";
 
@@ -28,7 +26,7 @@ export const aboutContent = {
       "MultiWorkWala works with families, local groups, volunteers and institutions to remove the practical barriers that keep people from opportunities that already exist.",
       "Our programs focus on education, healthcare, women's livelihoods, child welfare, community development and the environment, and every one begins by listening.",
     ],
-    image: placeholderImage("about-community", "Placeholder artwork of layered hills at dusk"),
+    image: placeholderImage("about-community", "NGO workers listening with local families"),
   },
   story: {
     title: "Our story",
@@ -36,9 +34,6 @@ export const aboutContent = {
       "Our work grows from a simple belief: lasting change happens when the people it affects help shape it.",
       "As we grow, we want to share what works, what does not, and what we are learning along the way.",
     ],
-    /** Shown to reviewers until the founding story is supplied. */
-    placeholderNote:
-      "Placeholder copy. Replace this section with the organization's verified founding story, including dates and founders.",
   },
   mission:
     "To widen access to education, healthcare and livelihood opportunities, so that every family can plan for a better future.",

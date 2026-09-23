@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/common/Reveal";
+import { SiteImage } from "@/components/common/SiteImage";
 import type { ImageAsset } from "@/types";
 
 /** Simple responsive image grid for detail-page galleries. The full Gallery page adds a lightbox. */
@@ -8,7 +9,7 @@ export function ImageGrid({ images }: { images: ImageAsset[] }) {
       {images.map((image, index) => (
         <li key={`${image.src}-${index}`}>
           <Reveal delay={index * 0.08}>
-            <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-card" />
+            <SiteImage image={image} loading="lazy" decoding="async" className="aspect-4/3 w-full rounded-2xl object-cover shadow-card" />
           </Reveal>
         </li>
       ))}

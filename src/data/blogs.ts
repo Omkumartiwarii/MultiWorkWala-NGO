@@ -1,5 +1,5 @@
 // DEMO DATA — REPLACE WITH VERIFIED ORGANIZATION CONTENT
-// Articles below are generic explainers written as placeholders. They do not describe real events.
+// Articles below are clearly marked sample editorial content until verified articles are available.
 import { placeholderImage } from "@/config/images";
 import { daysFromNow } from "@/utils/date";
 import type { BlogAuthor, BlogPost } from "@/types";
@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Learning centres shaped by the families who use them tend to be more welcoming and easier to sustain. Here is how we think about designing them.",
     category: "Education",
-    image: placeholderImage("education-1", "Placeholder artwork for an education article"),
+    image: placeholderImage("education-1", "Teacher helping children learn in a community classroom"),
     author: programs,
     publishedAt: daysFromNow(-6),
     readingMinutes: 5,
@@ -29,7 +29,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "A practical look at how a preventive health camp is planned, from registration to referral guidance, and where volunteers help most.",
     category: "Healthcare",
-    image: placeholderImage("healthcare-1", "Placeholder artwork for a healthcare article"),
+    image: placeholderImage("healthcare-1", "Health worker speaking with a family at a community camp"),
     author: programs,
     publishedAt: daysFromNow(-14),
     readingMinutes: 6,
@@ -92,7 +92,7 @@ export const blogPosts: BlogPost[] = [
     title: "Small enterprises, big confidence",
     excerpt:
       "Notes on what makes livelihood training effective for women starting their first enterprise, and what support helps most.",
-    category: "Impact",
+    category: "Women Empowerment",
     image: placeholderImage("women-2", "Placeholder artwork for an impact article"),
     author: programs,
     publishedAt: daysFromNow(-55),
@@ -109,6 +109,19 @@ export const blogPosts: BlogPost[] = [
     author: volunteers,
     publishedAt: daysFromNow(-88),
     readingMinutes: 3,
+    featured: false,
+  },
+  {
+    id: "post-9",
+    slug: "creating-space-for-children-to-learn-and-play",
+    title: "Creating space for children to learn and play",
+    excerpt:
+      "A sample editorial note on designing welcoming spaces where children can learn, play and feel supported by their community.",
+    category: "Child Welfare",
+    image: placeholderImage("children-2", "Sample artwork for a child welfare article"),
+    author: programs,
+    publishedAt: daysFromNow(-62),
+    readingMinutes: 5,
     featured: false,
   },
 ];

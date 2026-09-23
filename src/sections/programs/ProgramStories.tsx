@@ -15,7 +15,7 @@ export function ProgramStories({ slug }: { slug: string }) {
       <SectionHeading
         id="program-stories-heading"
         title="Stories from this program"
-        description="Illustrative placeholders. Verified stories, shared with consent, will replace them."
+        description="Stories are published only with consent and appropriate context from the people involved."
       />
       <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {data.map((story) => (

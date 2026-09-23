@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/common/Reveal";
+import { SiteImage } from "@/components/common/SiteImage";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { aboutContent } from "@/data/about";
@@ -18,12 +19,11 @@ export function AboutIntro() {
           </div>
         </Reveal>
         <Reveal delay={0.1}>
-          <img
-            src={intro.image.src}
-            alt={intro.image.alt}
+          <SiteImage
+            image={intro.image}
             loading="lazy"
             decoding="async"
-            className="aspect-[5/4] w-full rounded-3xl object-cover shadow-card"
+            className="aspect-5/4 w-full rounded-3xl object-cover shadow-card"
           />
         </Reveal>
       </div>

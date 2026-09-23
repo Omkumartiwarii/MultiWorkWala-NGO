@@ -1,5 +1,4 @@
 import { Reveal } from "@/components/common/Reveal";
-import { Badge } from "@/components/ui/Badge";
 import { Section } from "@/components/ui/Section";
 import { aboutContent } from "@/data/about";
 
@@ -16,12 +15,6 @@ export function OurStory() {
           {story.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-        </div>
-        <div className="mt-8 flex items-start gap-3 rounded-2xl bg-gold-50 p-4 text-sm text-gold-700">
-          <Badge tone="gold" className="shrink-0 bg-gold-200">
-            Placeholder
-          </Badge>
-          <p>{story.placeholderNote}</p>
         </div>
       </Reveal>
     </Section>

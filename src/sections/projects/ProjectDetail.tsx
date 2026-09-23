@@ -15,7 +15,6 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ROUTES } from "@/constants/routes";
 import { getFocusArea } from "@/data/focusAreas";
 import { donateUrl } from "@/utils/links";
-import { formatNumber } from "@/utils/format";
 import type { Project } from "@/types";
 import { RelatedProjects } from "./RelatedProjects";
 
@@ -47,9 +46,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               Overview
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-ink-600 sm:text-xl">{project.overview}</p>
-            <div className="mt-8">
-              <ProgressBar value={project.progress} label="Overall progress" />
-            </div>
+            {project.verified && <div className="mt-8"><ProgressBar value={project.progress} label="Overall progress" /></div>}
 
             <h3 className="mt-12 text-2xl font-medium">Objectives</h3>
             <div className="mt-5">
@@ -74,7 +71,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                 items={[
                   { label: "Status", value: <StatusBadge status={project.status} /> },
                   { label: "Location", value: project.location },
-                  { label: "Beneficiaries", value: `${formatNumber(project.beneficiaries)}+` },
+                  ...(project.verified ? [{ label: "Beneficiaries", value: `${project.beneficiaries}+` }] : []),
                   { label: "Duration", value: project.duration },
                 ]}
               />
@@ -90,7 +87,7 @@ export function ProjectDetail({ project }: { project: Project }) {
       </Section>
 
       <Section tone="white" labelledBy="project-gallery-heading">
-        <SectionHeading id="project-gallery-heading" title="Gallery" description="Placeholder artwork. Real project photography will appear here." />
+        <SectionHeading id="project-gallery-heading" title="Gallery" description="Images from this project and its community setting." />
         <div className="mt-10">
           <ImageGrid images={project.gallery} />
         </div>

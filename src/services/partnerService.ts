@@ -1,9 +1,8 @@
-import { mockRequest } from "@/api/mock";
-import { partners } from "@/data/partners";
+import { apiClient } from "@/api/client";
 import type { Partner } from "@/types";
 
 export const partnerService = {
   getAll(): Promise<Partner[]> {
-    return mockRequest(partners);
+    return apiClient.getList("/partners/");
   },
 };

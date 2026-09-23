@@ -68,7 +68,7 @@ export function Footer() {
               <Mail className="mt-0.5 size-5 shrink-0 text-gold-300" aria-hidden="true" />
               {organization.email}
             </a>
-            <ul className="flex flex-wrap gap-x-5 gap-y-1 text-sm" aria-label="Social media (placeholder links)">
+            <ul className="flex flex-wrap gap-x-5 gap-y-1 text-sm" aria-label="Social media links">
               {platforms.map((platform) => (
                 <li key={platform}>
                   <a

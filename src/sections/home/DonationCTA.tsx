@@ -15,10 +15,10 @@ export function DonationCTA() {
   return (
     <Section tone="white" labelledBy="donation-heading" spacing="compact">
       <Reveal>
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-navy-950 px-5 py-12 sm:px-12 sm:py-14 lg:px-16 lg:py-20">
+        <div className="relative isolate overflow-hidden rounded-4xl bg-navy-950 px-5 py-12 sm:px-12 sm:py-14 lg:px-16 lg:py-20">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute -top-32 -right-24 size-[28rem] rounded-full bg-gold-500/20 blur-3xl" />
-            <div className="absolute -bottom-40 -left-24 size-[28rem] rounded-full bg-brand-600/25 blur-3xl" />
+            <div className="absolute -top-32 -right-24 size-112 rounded-full bg-gold-500/20 blur-3xl" />
+            <div className="absolute -bottom-40 -left-24 size-112 rounded-full bg-brand-600/25 blur-3xl" />
           </div>
 
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
